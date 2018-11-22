@@ -1,0 +1,25 @@
+import os
+Way = input('Введите путь для создания проекта: ')
+Folder = input('Введите название проекта: ')
+NWay = os.path.join(Way,Folder)
+while (os.path.exists(NWay)):
+    Folder = input('В выбранной дериктории уже существует проект с таким названием!\n Введите название проекта: ')
+    NWay = os.path.join(Way,Folder)
+    if not os.path.exists(NWay):
+        break
+Way = os.path.join(Way,Folder)
+cssFolder = os.path.join(Way,'css')
+jsFolder = os.path.join(Way,'script')
+os.mkdir(Way)
+os.mkdir(cssFolder)
+os.mkdir(jsFolder)
+html = os.path.join(Way,'index.html')
+css = os.path.join(cssFolder,'style.css')
+script = os.path.join(jsFolder,'script.js')
+Folder = open(html,'w',encoding='utf-8')
+Folder.write('<!DOCTYPE html>\n<html lang="en">\n\t<head>\n\t\t<meta charset="UTF-8">\n\t\t<title>Title</title>\n\t\t<link rel="stylesheet" href="css/style.css"/>\n\t</head>\n\t<body>\n\t\t<div class="content">\n\t\t\t<h1>Hello world!:)</h1>\n\t\t</div>\n\t\t<script src="js/app.js"></script>\n\t</body>\n</html>')
+Folder = open(css,'w',encoding='utf-8')
+Folder.write("html {} body {} .content {} .content h1 {}")
+Folder = open(script,'w',encoding='utf-8')
+Folder.write('function NewJs{/n/n};')
+print('Проект успешно создан')
